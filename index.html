@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Monetization Guide A to Z</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Facebook Monetization Guide A to Z</h1>
+            <p>আপনার পেজ বা প্রোফাইলকে আয়ের জন্য যোগ্য করে তোলার পূর্ণাঙ্গ গাইডলাইন।</p>
+            <a href="#eligibility" class="btn">শুরু করুন</a>
+        </div>
+    </header>
+
+  <section id="email-feature" class="section bg-light">
+    <div class="container" style="text-align: center;">
+        <h2>গাইডটি ইমেইলে পেতে চান?</h2>
+        <p>আপনার ইমেইল এড্রেসটি দিন, আমরা পিডিএফ লিংকটি পাঠিয়ে দিব।</p>
+        
+        <div style="max-width: 400px; margin: 20px auto;">
+            <input type="email" id="emailInput" placeholder="example@gmail.com" required style="padding: 10px; width: 70%; border: 1px solid #ccc; border-radius: 5px;">
+            <button onclick="sendEmail()" class="btn" id="emailBtn">ইমেইল পাঠান</button>
+        </div>
+        <p id="statusMsg" style="margin-top: 10px; font-weight: bold;"></p>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+    // EmailJS ইনিশিয়ালাইজেশন
+    (function(){
+        emailjs.init("5Dxqskf0buqd2qZ66"); // ধাপ ৩ এ এটি পাবেন
+    })();
+
+    function sendEmail() {
+        const email = document.getElementById('emailInput').value;
+        const statusMsg = document.getElementById('statusMsg');
+        const btn = document.getElementById('emailBtn');
+
+        if (!email || !email.includes('@')) {
+            statusMsg.style.color = 'red';
+            statusMsg.innerText = 'দয়া করে সঠিক ইমেইল দিন।';
+            return;
+        }
+
+        btn.disabled = true;
+        btn.innerText = 'পাঠানো হচ্ছে...';
+        statusMsg.innerText = '';
+
+        // ইমেইল পাঠানোর প্যারামিটার
+        const templateParams = {
+            to_email: email,
+            message: "আপনার ফেইসবুক মনিটাইজেশন গাইড লিংক: https://fb-guide.vercel.app",
+            from_name: "Monjurul Haque"
+        };
+
+        emailjs.send('service_ar5c7ui', 'template_ztu67ah', templateParams)
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                statusMsg.style.color = 'green';
+                statusMsg.innerText = 'ইমেইল সফলভাবে পাঠানো হয়েছে!';
+                btn.disabled = false;
+                btn.innerText = 'ইমেইল পাঠান';
+            }, function(error) {
+                console.log('FAILED...', error);
+                statusMsg.style.color = 'red';
+                statusMsg.innerText = 'ত্রুটি হয়েছে, আবার চেষ্টা করুন।';
+                btn.disabled = false;
+                btn.innerText = 'ইমেইল পাঠান';
+            });
+    }
+</script>
+
+    <section id="eligibility" class="section">
+        <div class="container">
+            <h2>মনিটাইজেশন এলিজিবিলিটি স্ট্যাটাস</h2>
+            <p>Meta Business Suite-এ আপনার পেজের স্বাস্থ্যের অবস্থা ৩টি রঙে দেখা যায়:</p>
+            <div class="status-grid">
+                <div class="card green">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>সবুজ (Green)</h3>
+                    <p>আপনার পেজ মনিটাইজেশনের জন্য সম্পূর্ণ প্রস্তুত এবং কোনো পলিসি ইস্যু নেই।</p>
+                </div>
+                <div class="card yellow">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h3>হলুদ (Yellow)</h3>
+                    <p>কিছু সমস্যা আছে, যা ওয়ার্নিং হিসেবে কাজ করে। এটি ঠিক করা প্রয়োজন।</p>
+                </div>
+                <div class="card red">
+                    <i class="fas fa-times-circle"></i>
+                    <h3>লাল (Red)</h3>
+                    <p>গুরুতর পলিসি ভায়োলেশন আছে। এই অবস্থায় মনিটাইজেশন সম্ভব নয়।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="policies" class="section bg-light">
+        <div class="container">
+            <h2>মনিটাইজেশন পলিসি ও নিয়মাবলী</h2>
+            <div class="policy-wrapper">
+                <div class="policy-box">
+                    <h3>১. পার্টনার মনিটাইজেশন পলিসি</h3>
+                    <ul>
+                        <li>এলিজিবল দেশে বাস করতে হবে (বাংলাদেশ এখন এলিজিবল)।</li>
+                        <li>কমিউনিটি স্ট্যান্ডার্ড মেনে চলতে হবে।</li>
+                        <li>অরিজিনাল কন্টেন্ট শেয়ার করতে হবে।</li>
+                        <li>ফেইক এনগেজমেন্ট (কেনা ফলোয়ার) করা যাবে না।</li>
+                    </ul>
+                </div>
+                <div class="policy-box">
+                    <h3>২. কন্টেন্ট মনিটাইজেশন পলিসি</h3>
+                    <ul>
+                        <li>ভিডিওতে কপিরাইট মিউজিক থাকা যাবে না।</li>
+                        <li>ভায়োলেন্স বা সেক্সুয়াল কন্টেন্ট নিষিদ্ধ।</li>
+                        <li>স্থির চিত্র বা স্লাইডশো দিয়ে তৈরি ভিডিওতে অ্যাড আসবে না।</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tools" class="section">
+        <div class="container">
+            <h2>জনপ্রিয় মনিটাইজেশন টুলস ও শর্তাবলী</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>ইন-স্ট্রিম অ্যাডস (In-Stream Ads)</h3>
+                    <p>লং ভিডিওর মধ্যে দেখানো বিজ্ঞাপন।</p>
+                    <ul>
+                        <li><strong>ফলোয়ার:</strong> কমপক্ষে ৫,০০০।</li>
+                        <li><strong>ওয়াচ টাইম:</strong> গত ৬০ দিনে ৬০,০০০ মিনিট।</li>
+                        <li><strong>ভিডিও:</strong> কমপক্ষে ৫টি অ্যাক্টিভ ভিডিও।</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h3>অ্যাডস অন রিলস (Ads on Reels)</h3>
+                    <p>রিলস ভিডিওর নিচের বিজ্ঞাপন।</p>
+                    <ul>
+                        <li>বর্তমানে এটি <strong>Invite Only</strong>।</li>
+                        <li>নিজস্ব ও ভালো মানের রিলস দিলে ইনভাইট পাওয়া যায়।</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h3>স্টারস (Stars)</h3>
+                    <p>ফ্যানদের গিফট।</p>
+                    <ul>
+                        <li>কমপক্ষে ৫০০ ফলোয়ার (টানা ৩০ দিন)।</li>
+                        <li>কমিউনিটি স্ট্যান্ডার্ড মানতে হবে।</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="payout" class="section bg-light">
+        <div class="container">
+            <h2>বাংলাদেশ থেকে পে-আউট সেটআপ</h2>
+            <ul class="step-list">
+                <li><strong>TIN সার্টিফিকেট:</strong> ই-টিন ওয়েবসাইট থেকে ট্যাক্স ইনফো বা TIN নাম্বার খুলে নিন।</li>
+                <li><strong>ব্যাংক একাউন্ট:</strong> দ্রুত রেমিট্যান্স প্রসেস করে এমন ব্যাংক (যেমন: ইসলামী ব্যাংক, ডাচ-বাংলা, সিটি ব্যাংক) ব্যবহার করুন।</li>
+                <li><strong>SWIFT Code:</strong> আপনার ব্যাংকের সঠিক সুইফট কোডটি জেনে নিন।</li>
+                <li><strong>Tax Form:</strong> W-8BEN ফর্মে আপনার দেশের নাম এবং TIN নাম্বার দিন (ইউএস টিন লাগবে না)।</li>
+            </ul>
+            <p class="note"><em>নোট: ১০০ ডলার জমা হলে সাধারণত পরের মাসের ২১-২৬ তারিখের মধ্যে ব্যাংকে টাকা চলে আসে।</em></p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>তথ্যসূত্র: Facebook Monetization Guide PDF by Nasir Uddin Shamim</p>
+            <p>&copy; 2026 Developed by Monjurul Haque</p>
+        </div>
+    </footer>
+
+</body>
+</html>
